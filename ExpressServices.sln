@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressServices.UWP", "ExpressServices.UWP\ExpressServices.UWP.csproj", "{C0835568-2000-4FBB-B10E-33A882F04034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressServices.Core", "ExpressServices.Core\ExpressServices.Core.csproj", "{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLunaLibrary", "GLunaLibrary\GLunaLibrary.csproj", "{D050E5B4-3B8B-4A86-81FF-EEECF436759C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|ARM.Build.0 = Debug|ARM
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|ARM.Deploy.0 = Debug|ARM
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|ARM64.ActiveCfg = Debug|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|x64.ActiveCfg = Debug|x64
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|x64.Build.0 = Debug|x64
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|x64.Deploy.0 = Debug|x64
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|x86.ActiveCfg = Debug|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|x86.Build.0 = Debug|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Debug|x86.Deploy.0 = Debug|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|Any CPU.ActiveCfg = Release|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|ARM.ActiveCfg = Release|ARM
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|ARM.Build.0 = Release|ARM
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|ARM.Deploy.0 = Release|ARM
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|ARM64.ActiveCfg = Release|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|x64.ActiveCfg = Release|x64
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|x64.Build.0 = Release|x64
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|x64.Deploy.0 = Release|x64
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|x86.ActiveCfg = Release|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|x86.Build.0 = Release|x86
+		{C0835568-2000-4FBB-B10E-33A882F04034}.Release|x86.Deploy.0 = Release|x86
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|ARM.ActiveCfg = Debug|ARM
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|ARM.Build.0 = Debug|ARM
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|ARM64.Build.0 = Debug|ARM64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|x64.ActiveCfg = Debug|x64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|x64.Build.0 = Debug|x64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|x86.ActiveCfg = Debug|x86
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Debug|x86.Build.0 = Debug|x86
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|ARM.ActiveCfg = Release|ARM
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|ARM.Build.0 = Release|ARM
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|ARM64.ActiveCfg = Release|ARM64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|ARM64.Build.0 = Release|ARM64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|x64.ActiveCfg = Release|x64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|x64.Build.0 = Release|x64
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|x86.ActiveCfg = Release|x86
+		{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}.Release|x86.Build.0 = Release|x86
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|ARM.Build.0 = Debug|ARM
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|x64.ActiveCfg = Debug|x64
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|x64.Build.0 = Debug|x64
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|x86.ActiveCfg = Debug|x86
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Debug|x86.Build.0 = Debug|x86
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|ARM.ActiveCfg = Release|ARM
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|ARM.Build.0 = Release|ARM
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|ARM64.Build.0 = Release|Any CPU
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|x64.ActiveCfg = Release|x64
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|x64.Build.0 = Release|x64
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|x86.ActiveCfg = Release|x86
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE750DF4-0801-4E63-8362-A7225DC16344}
+	EndGlobalSection
+EndGlobal
