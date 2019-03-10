@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressServices.UWP", "ExpressServices.UWP\ExpressServices.UWP.csproj", "{C0835568-2000-4FBB-B10E-33A882F04034}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D050E5B4-3B8B-4A86-81FF-EEECF436759C} = {D050E5B4-3B8B-4A86-81FF-EEECF436759C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressServices.Core", "ExpressServices.Core\ExpressServices.Core.csproj", "{925F00B5-9E6A-4EEF-9075-9FD0C95303EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLunaLibrary", "GLunaLibrary\GLunaLibrary.csproj", "{D050E5B4-3B8B-4A86-81FF-EEECF436759C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressServices.CustomControls", "ExpressServices.CustomControls\ExpressServices.CustomControls.csproj", "{D050E5B4-3B8B-4A86-81FF-EEECF436759C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

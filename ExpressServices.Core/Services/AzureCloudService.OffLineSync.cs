@@ -1,4 +1,4 @@
-﻿using GLunaLibrary.Helpers;
+﻿using ExpressServices.Core.Helpers;
 using ExpressServices.Core.Abstractions;
 using ExpressServices.Core.Models;
 using Microsoft.WindowsAzure.MobileServices;

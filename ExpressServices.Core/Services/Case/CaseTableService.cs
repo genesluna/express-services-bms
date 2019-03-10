@@ -1,7 +1,5 @@
-﻿using GLunaLibrary.Helpers;
-using ExpressServices.Core.Abstractions;
+﻿using ExpressServices.Core.Abstractions;
 using ExpressServices.Core.Models;
-using System.Threading.Tasks;
 
 namespace ExpressServices.Core.Services
 {
@@ -36,7 +34,6 @@ namespace ExpressServices.Core.Services
 
         private void InitializeTables()
         {
-
             CaseProductTable = CloudService.GetTable<CaseProduct>();
 
             CaseServiceTable = CloudService.GetTable<CaseService>();

@@ -1,6 +1,4 @@
 ﻿using Caliburn.Micro;
-using ExpressServices.Services;
-using GLunaLibrary.Helpers;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;

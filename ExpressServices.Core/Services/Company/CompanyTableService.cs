@@ -1,10 +1,6 @@
-﻿using GLunaLibrary.Helpers;
-using ExpressServices.Core.Abstractions;
+﻿using ExpressServices.Core.Abstractions;
 using ExpressServices.Core.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpressServices.Core.Services
@@ -32,7 +28,7 @@ namespace ExpressServices.Core.Services
 
         private void InitializeTables()
         {
-            CompanyTable =CloudService.GetTable<Company>();
+            CompanyTable = CloudService.GetTable<Company>();
         }
 
         public async Task<List<Company>> SearchCompanysByNameOrDocumentAsync(string queryText, int start = 0, int count = 50)

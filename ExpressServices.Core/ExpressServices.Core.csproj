@@ -125,6 +125,10 @@
     <Compile Include="Abstractions\ICloudTable.cs" />
     <Compile Include="Helpers\AuthenticationDelegatingHandler.cs" />
     <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Json.cs" />
+    <Compile Include="Helpers\NetworkInformation.cs" />
+    <Compile Include="Helpers\SecurePasswordHasher.cs" />
+    <Compile Include="Helpers\Singleton.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AppServiceIdentity.cs" />
     <Compile Include="Models\Case.cs" />
@@ -211,12 +215,6 @@
     <PackageReference Include="MvvmLight">
       <Version>5.4.1.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GLunaLibrary\GLunaLibrary.csproj">
-      <Project>{d050e5b4-3b8b-4a86-81ff-eeecf436759c}</Project>
-      <Name>GLunaLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
