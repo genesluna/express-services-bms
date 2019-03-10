@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 using ExpressServices.Activation;
-using GLunaLibrary.Helpers;
+using ExpressServices.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -233,10 +233,6 @@
       <Project>{925f00b5-9e6a-4eef-9075-9fd0c95303ef}</Project>
       <Name>ExpressServices.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GLunaLibrary\GLunaLibrary.csproj">
-      <Project>{d050e5b4-3b8b-4a86-81ff-eeecf436759c}</Project>
-      <Name>GLunaLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
