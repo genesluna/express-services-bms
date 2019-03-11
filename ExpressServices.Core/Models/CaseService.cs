@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class CaseService : BaseModel
+    public class CaseService : ModelBase
     {
         private string _caseId;
         private string _serviceId;

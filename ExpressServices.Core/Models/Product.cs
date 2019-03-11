@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class Product : BaseModel
+    public class Product : ModelBase
     {
         #region Private Properties
 

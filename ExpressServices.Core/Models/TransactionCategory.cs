@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class TransactionCategory : BaseModel
+    public class TransactionCategory : ModelBase
     {
         private string _name;
 

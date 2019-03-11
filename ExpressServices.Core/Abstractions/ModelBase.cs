@@ -1,10 +1,10 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Caliburn.Micro;
 using Newtonsoft.Json;
 using System;
 
 namespace ExpressServices.Core.Abstractions
 {
-    public abstract class BaseModel : ObservableObject
+    public abstract class ModelBase : PropertyChangedBase
     {
         private string _id;
         private string _companyId;
@@ -29,7 +29,7 @@ namespace ExpressServices.Core.Abstractions
         [JsonProperty(PropertyName = "createdat")]
         public DateTimeOffset? CreatedAt { get => _createdAt; set => Set(ref _createdAt, value); }
 
-        //for client purposes, createdAt not stored when offline
+        //for client purposes, because createdAt is not stored when offline
         [JsonProperty(PropertyName = "datecreated")]
         public DateTimeOffset DateCreated { get => _dateCreated; set => Set(ref _dateCreated, value); }
 

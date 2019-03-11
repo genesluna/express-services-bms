@@ -11,7 +11,7 @@ using Windows.UI.Popups;
 
 namespace ExpressServices.Core.Services
 {
-    public class AzureCloudTable<T> : ICloudTable<T> where T : BaseModel
+    public class AzureCloudTable<T> : ICloudTable<T> where T : ModelBase
     {
         private MobileServiceClient _client;
 
@@ -209,6 +209,11 @@ namespace ExpressServices.Core.Services
             return (item.Id == null) ?
                 await CreateItemAsync(item) :
                 await UpdateItemAsync(item);
+        }
+
+        public override string ToString()
+        {
+            return typeof(T).Name;
         }
 
         #endregion ICloudTable interface

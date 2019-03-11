@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class User : BaseModel
+    public class User : ModelBase
     {
         private string _providerId;
         private string _name;

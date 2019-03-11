@@ -4,7 +4,7 @@ using System;
 
 namespace ExpressServices.Core.Models
 {
-    public class Transaction : BaseModel
+    public class Transaction : ModelBase
     {
         private string _operationType;
         private string _paymentMethod;

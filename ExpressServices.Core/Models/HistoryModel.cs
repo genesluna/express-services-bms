@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Caliburn.Micro;
 using System;
 
 namespace ExpressServices.Core.Models
 {
-    public class HistoryModel : ObservableObject
+    public class HistoryModel : PropertyChangedBase
     {
         private string _id;
         private string _companyId;

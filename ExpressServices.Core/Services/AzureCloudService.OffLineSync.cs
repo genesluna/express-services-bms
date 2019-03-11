@@ -71,7 +71,77 @@ namespace ExpressServices.Core.Services
             Debug.WriteLine("Initialized Sync Context");
         }
 
-        public async Task SyncOfflineCacheAsync()
+        public async Task SyncOfflineCacheAsync(IProgress<ProgressReportModel> progress)
+        {
+            await InitializeAsync();
+
+            // If we're online, then sync
+            if (Network.IsConnected)
+            {
+                ProgressReportModel report = new ProgressReportModel();
+
+                // Push the Operations Queue to the mobile backend
+                try
+                {
+                    var tableList = new List<object>();
+
+                    tableList.Add(GetTable<Customer>());
+                    tableList.Add(GetTable<Service>());
+                    tableList.Add(GetTable<Case>());
+                    tableList.Add(GetTable<CaseService>());
+                    tableList.Add(GetTable<CaseProduct>());
+                    tableList.Add(GetTable<CaseNote>());
+                    tableList.Add(GetTable<CaseNoteModel>());
+                    tableList.Add(GetTable<NoteModel>());
+                    tableList.Add(GetTable<Company>());
+                    tableList.Add(GetTable<User>());
+                    tableList.Add(GetTable<Product>());
+                    tableList.Add(GetTable<Supplier>());
+                    tableList.Add(GetTable<Account>());
+                    tableList.Add(GetTable<TransactionCategory>());
+                    tableList.Add(GetTable<Transaction>());
+                    tableList.Add(GetTable<Sale>());
+                    tableList.Add(GetTable<SaleProduct>());
+                    tableList.Add(GetTable<SaleService>());
+                    tableList.Add(GetTable<SaleTransaction>());
+                    //tableList.Add(GetTable<FingerPrint>());
+
+                    // Pull each sync table
+                    await Task.Run(async () =>
+                    {
+                        await Client.SyncContext.PushAsync();
+
+                        int i = 0;
+
+                        Parallel.ForEach<dynamic>(tableList, async (table) =>
+                        {
+                            await table.PullAsync();
+                            ++i;
+                            report.PercentageComplete = (i * 100) / tableList.Count;
+                            report.CurrentTask = table.ToString();
+                            progress.Report(report);
+                        });
+                    });
+                }
+                catch (MobileServicePushFailedException ex)
+                {
+                    if (ex.PushResult != null)
+                    {
+                        foreach (var error in ex.PushResult.Errors)
+                        {
+                            await ResolveConflictAsync(error);
+                        }
+                    }
+                    if (ex.PushResult.Errors.Count < 1)
+                    {
+                        Debug.WriteLine($"Erro (Full Sync) ao sincronizar as tabelas. Mensagem: { ex.Message}");
+                        throw new Exception($"Erro (Full Sync) ao sincronizar. \n\nMensagem: { ex.Message } {ex.InnerException?.Message}", ex);
+                    }
+                }
+            }
+        }
+
+        public async Task SyncOfflineCacheAsyncV2()
         {
             await InitializeAsync();
 
@@ -127,7 +197,7 @@ namespace ExpressServices.Core.Services
             }
         }
 
-        public async Task SyncOffLineTableAsync<T>() where T : BaseModel
+        public async Task SyncOffLineTableAsync<T>() where T : ModelBase
         {
             await InitializeAsync();
 

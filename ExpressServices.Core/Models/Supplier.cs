@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class Supplier : BaseModel
+    public class Supplier : ModelBase
     {
         [JsonProperty(PropertyName = "iscompany")]
         public bool IsCompany { get; set; }
