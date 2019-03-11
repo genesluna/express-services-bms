@@ -150,10 +150,10 @@
     <value>Light</value>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
+    <value>Sobre este aplicativo</value>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Settings page placeholder text.  Your app description goes here.</value>
+    <value>Sistema de gerenciamento de empresas focado em assistências técnicas. Provê capacidades operacionais e financeiras.</value>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
