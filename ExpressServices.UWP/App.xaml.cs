@@ -13,19 +13,16 @@ namespace ExpressServices
     [Windows.UI.Xaml.Data.Bindable]
     public sealed partial class App
     {
-        private ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
 
-        private Lazy<ActivationService> _activationService;
+        private readonly Lazy<ActivationService> _activationService;
 
-        private ActivationService ActivationService
-        {
-            get { return _activationService.Value; }
-        }
+        private ActivationService ActivationService => _activationService.Value;
 
         public App()
         {
             //Environment (Local, Stage, Production)
-            localSettings.Values["BackendEnvironment"] = "Local";
+            _localSettings.Values["BackendEnvironment"] = "Stage";
 
             InitializeComponent();
 
@@ -33,6 +30,8 @@ namespace ExpressServices
 
             // Deferred execution until used. Check https://msdn.microsoft.com/library/dd642331(v=vs.110).aspx for further info on Lazy<T> class.
             _activationService = new Lazy<ActivationService>(CreateActivationService);
+
+            FocusVisualKind = FocusVisualKind.Reveal;
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -69,12 +68,14 @@ namespace ExpressServices
             _container = new WinRTContainer();
             _container.RegisterWinRTServices();
 
-            // Register the viewmodels using reflection
+            _container.Singleton<IEventAggregator, EventAggregator>();
+
+            // Register the view models using reflection
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass && type.Name.EndsWith("ViewModel"))
                 .ToList()
-                .ForEach(viewModeltype => _container
-                .RegisterPerRequest(viewModeltype, viewModeltype.ToString(), viewModeltype));
+                .ForEach(viewModelType => _container
+                .RegisterPerRequest(viewModelType, viewModelType.ToString(), viewModelType));
 
             //_container.PerRequest<ShellViewModel>();
             //_container.PerRequest<WorkshopViewModel>();
@@ -100,10 +101,10 @@ namespace ExpressServices
 
         private ActivationService CreateActivationService()
         {
-            return new ActivationService(_container, typeof(ViewModels.WorkshopViewModel), new Lazy<UIElement>(CreateShell));
+            return new ActivationService(_container, typeof(ViewModels.BlankViewModel), new Lazy<UIElement>(CreateShell));
         }
 
-        private UIElement CreateShell()
+        private static UIElement CreateShell()
         {
             var shellPage = new Views.ShellPage();
             return shellPage;

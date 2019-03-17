@@ -1,12 +1,14 @@
 ﻿using Caliburn.Micro;
 using ExpressServices.Core.Abstractions;
+using ExpressServices.Core.Helpers;
 using ExpressServices.Core.Models;
 using ExpressServices.Core.Services;
+using ExpressServices.Dialogs;
 using ExpressServices.Helpers;
 using ExpressServices.Services;
 using ExpressServices.Views;
-using ExpressServices.Core.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
@@ -15,6 +17,7 @@ using Windows.System;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using User = ExpressServices.Core.Models.User;
@@ -35,53 +38,55 @@ namespace ExpressServices.ViewModels
         private WinUI.NavigationView _navigationView;
         private bool _isBackEnabled;
         private WinUI.NavigationViewItem _selected;
-        private ApplicationDataContainer _localSettings;
-        private ICloudService _cloudService;
+        private readonly ApplicationDataContainer _localSettings;
+        private readonly ICloudService _cloudService;
+        private readonly SyncDialog _syncDialog;
 
         public ShellViewModel(WinRTContainer container)
         {
             _container = container;
             _paneTitle = "Manutenção Express";
-            _appTitle = "Manutenção Express";
+            _appTitle = "Carregando...";
             _localSettings = ApplicationData.Current.LocalSettings;
             _cloudService = AzureCloudService.Instance;
+            _syncDialog = new SyncDialog();
         }
 
         public bool IsBackEnabled
         {
-            get { return _isBackEnabled; }
-            set { Set(ref _isBackEnabled, value); }
+            get => _isBackEnabled;
+            set => Set(ref _isBackEnabled, value);
         }
 
         public WinUI.NavigationViewItem Selected
         {
-            get { return _selected; }
-            set { Set(ref _selected, value); }
+            get => _selected;
+            set => Set(ref _selected, value);
         }
 
         public string PaneTitle
         {
-            get { return _paneTitle; }
-            set { Set(ref _paneTitle, value); }
+            get => _paneTitle;
+            set => Set(ref _paneTitle, value);
         }
 
         public string AppTitle
         {
-            get { return _appTitle; }
-            set { Set(ref _appTitle, value); }
+            get => _appTitle;
+            set => Set(ref _appTitle, value);
         }
 
         public string AppConnectivityText
         {
-            get { return _appConnectivityText; }
-            set { Set(ref _appConnectivityText, value); }
+            get => _appConnectivityText;
+            set => Set(ref _appConnectivityText, value);
         }
 
         private async Task LoginAsync()
         {
             await _cloudService.InitializeAsync();
 
-            var User = new User();
+            var user = new User();
 
             if (Network.IsConnected) // OnLine Auth
             {
@@ -89,10 +94,7 @@ namespace ExpressServices.ViewModels
 
                 if (currentClient != null)
                 {
-                    // Full Data Sync
-                    await _cloudService.SyncOfflineCacheAsync();
-
-                    User = await _cloudService.GetAuthenticatedUserAsync();
+                    await _cloudService.GetAuthenticatedUserAsync();
 
                     //User Local Password
                     //if (User.LocalPassword == null)
@@ -128,7 +130,7 @@ namespace ExpressServices.ViewModels
             }
         }
 
-        protected async override void OnInitialize()
+        protected override async void OnInitialize()
         {
             base.OnInitialize();
             var view = GetView() as IShellView;
@@ -138,31 +140,29 @@ namespace ExpressServices.ViewModels
 
             if (_navigationService != null)
             {
-                _navigationService.NavigationFailed += (sender, e) =>
-                {
-                    throw e.Exception;
-                };
+                _navigationService.NavigationFailed += (sender, e) => throw e.Exception;
                 _navigationService.Navigated += NavigationService_Navigated;
-                _navigationView.BackRequested += OnBackRequested;
+                if (_navigationView != null) _navigationView.BackRequested += OnBackRequested;
             }
-
-            Network.InternetConnectionChanged += OnInternetConnectionChanged;
-
-            TitleBarCustomization();
 
             await LoginAsync();
 
+            // Full Data Sync
+            await _syncDialog.ShowAsync();
+
+            TitleBarCustomization();
+
             PupulateMenuItems();
+
+           // _navigationService.NavigateToViewModel(typeof(WorkshopViewModel));
         }
 
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
-            if (GetView() is UIElement page)
-            {
-                page.KeyboardAccelerators.Add(_altLeftKeyboardAccelerator);
-                page.KeyboardAccelerators.Add(_backKeyboardAccelerator);
-            }
+            if (!(GetView() is UIElement page)) return;
+            page.KeyboardAccelerators.Add(_altLeftKeyboardAccelerator);
+            page.KeyboardAccelerators.Add(_backKeyboardAccelerator);
         }
 
         private void OnItemInvoked(WinUI.NavigationViewItemInvokedEventArgs args)
@@ -182,25 +182,66 @@ namespace ExpressServices.ViewModels
             _navigationService.NavigateToViewModel(viewModelType);
         }
 
-        private async void OnInternetConnectionChanged(object sender, InternetConnectionChangedEventArgs e)
+        private async void OnFooterItemTapped(dynamic sender, TappedRoutedEventArgs args)
         {
-            var User = CurrentUser.Instance;
-
-            AppConnectivityText = Network.IsConnected ? "Online 📡" : "Offline ⛔";
-
-            if (e.IsConnected)
+            switch (sender.Tag.ToString())
             {
-                await _cloudService.SyncOfflineCacheAsync().ConfigureAwait(false);
+                case "Logout":
+                    await OnLogout();
+                    break;
+
+                default:
+                    break;
             }
         }
 
-        private void OnBackRequested(WinUI.NavigationView sender, WinUI.NavigationViewBackRequestedEventArgs args)
+        private async Task OnLogout()
         {
+            // IsBusy = true;
+
+            var deleteFileDialog = new ContentDialog
+            {
+                Title = "Deseja mesmo fazer logout?",
+                Content = "Caso prossiga, o aplicativo será reinicializado e novas credenciais serão solicitadas.",
+                PrimaryButtonText = "Logout",
+                CloseButtonText = "Cancelar"
+            };
+
+            var result = await deleteFileDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                await _cloudService.LogoutAsync();
+
+                // await App.CloseLocalServicesServer();
+
+                Application.Current.Exit();
+            }
+
+            // IsBusy = false;
+        }
+
+        private static void OnBackRequested(WinUI.NavigationView sender, WinUI.NavigationViewBackRequestedEventArgs args)
+        {
+            if (_navigationService.BackStack[0].SourcePageType.Name == typeof(BlankPage).Name)
+            {
+                return;
+            }
             _navigationService.GoBack();
         }
 
         private void NavigationService_Navigated(object sender, NavigationEventArgs e)
         {
+            if (sender is Frame frame)
+            {
+                var entryPage = frame.BackStack.FirstOrDefault(page => page.SourcePageType == typeof(BlankPage));
+
+                if ( entryPage != null)
+                {
+                    frame.BackStack.Remove(entryPage);
+                }
+            }
+
             IsBackEnabled = _navigationService.CanGoBack;
             if (e.SourcePageType == typeof(SettingsPage))
             {
@@ -235,11 +276,10 @@ namespace ExpressServices.ViewModels
 
         private static void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
-            if (_navigationService.CanGoBack)
-            {
-                _navigationService.GoBack();
-                args.Handled = true;
-            }
+            if (!_navigationService.CanGoBack) return;
+
+            _navigationService.GoBack();
+            args.Handled = true;
         }
 
         private void PupulateMenuItems()
@@ -252,15 +292,15 @@ namespace ExpressServices.ViewModels
 
         private void TitleBarCustomization()
         {
-            Util util = new Util();
+            var util = new Util();
 
-            ApplicationView appView = ApplicationView.GetForCurrentView();
+            var appView = ApplicationView.GetForCurrentView();
             appView.TitleBar.BackgroundColor = util.GetSolidColorBrush("#FF333333").Color;
             appView.TitleBar.ForegroundColor = Colors.White;
             appView.TitleBar.ButtonBackgroundColor = util.GetSolidColorBrush("#FF555555").Color;
             appView.TitleBar.ButtonForegroundColor = Colors.White;
 
-            Package package = Package.Current;
+            var package = Package.Current;
             var appName = package.DisplayName;
             var appVersion = package.Id.Version;
             var appVersionString = $"{appVersion.Major}.{appVersion.Minor}.{appVersion.Build}";

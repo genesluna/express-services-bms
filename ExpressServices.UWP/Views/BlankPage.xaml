@@ -9,10 +9,11 @@
     <Grid
         x:Name="ContentArea"
         Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel>
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
-        </Grid>
+            <TextBox x:Name="Test"/>
+            <Button x:Name="Go" Content="Go now!"/>
+        </StackPanel>
     </Grid>
 </Page>

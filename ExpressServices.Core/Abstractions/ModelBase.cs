@@ -1,10 +1,10 @@
-﻿using Caliburn.Micro;
+﻿using ExpressServices.Core.Helpers;
 using Newtonsoft.Json;
 using System;
 
 namespace ExpressServices.Core.Abstractions
 {
-    public abstract class ModelBase : PropertyChangedBase
+    public abstract class ModelBase : Observable
     {
         private string _id;
         private string _companyId;

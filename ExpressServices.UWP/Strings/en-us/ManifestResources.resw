@@ -117,43 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Shell_Workshop.Content" xml:space="preserve">
-    <value>Workshop</value>
-    <comment>Navigation view item name for Workshop</comment>
-  </data>
-  <data name="Shell_Customers.Content" xml:space="preserve">
-    <value>Customers</value>
-    <comment>Navigation view item name for Customers</comment>
-  </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Choose Theme</value>
-  </data>
-  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
-  </data>
-  <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows default</value>
-  </data>
-  <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
-  </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
+  <data name="AppDescription" xml:space="preserve">
     <value>Business management system focused on repair shops. It provides both financial and operational capabilities.</value>
+    <comment>Application description</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
-  </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
-  </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
-  </data>
-  <data name="Shell_Blank.Content" xml:space="preserve">
-    <value>Blank</value>
-    <comment>Navigation view item name for Blank</comment>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Express Services</value>
+    <comment>Application display name</comment>
   </data>
 </root>

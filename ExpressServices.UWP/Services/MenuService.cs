@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using WinUI = Microsoft.UI.Xaml.Controls;
 
 namespace ExpressServices.Services
@@ -10,6 +11,8 @@ namespace ExpressServices.Services
         private static IEnumerable<WinUI.NavigationViewItem> Menus()
         {
             const string prefix = "ExpressServices.Views.";
+            var FontAwesome = new FontFamily("ms-appx:///Assets/Fonts/FontAwesome.otf#FontAwesome");
+            var MaterialIcons = new FontFamily("ms-appx:///Assets/Fonts/MaterialIcons-Regular.ttf#Material Icons");
 
             var menus = new ObservableCollection<WinUI.NavigationViewItem>
             {
@@ -21,7 +24,7 @@ namespace ExpressServices.Services
                 {
                     Content = "Oficina",
                     Icon = new SymbolIcon(Symbol.Repair),
-                    Tag = prefix + "WorkshopPage"
+                    Tag = prefix + "WorkshopPage",
                 },
 
                 new WinUI.NavigationViewItem

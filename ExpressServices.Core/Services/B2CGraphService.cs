@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using ExpressServices.Core.Credentials;
 
 namespace ExpressServices.Core.Services
 {
@@ -27,7 +28,7 @@ namespace ExpressServices.Core.Services
         {
             // The client_id, client_secret, and tenant are pulled in from the App.config file
             this.ClientId = Constants.aadGraphClientId;
-            this.ClientSecret = Constants.aadGraphClientSecret;
+            this.ClientSecret = ApiKeys.AadGraphClientSecret;
             this.Tenant = Constants.Tenant;
 
             // The AuthenticationContext is ADAL's primary class, in which you indicate the direcotry to use.

@@ -1,9 +1,9 @@
-﻿using Caliburn.Micro;
+﻿using ExpressServices.Core.Helpers;
 using System;
 
 namespace ExpressServices.Core.Models
 {
-    public class HistoryModel : PropertyChangedBase
+    public class HistoryModel : Observable
     {
         private string _id;
         private string _companyId;
