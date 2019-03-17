@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ExpressServices.Core.Abstractions
 {
-    public interface ICloudTable<T> where T : BaseModel
+    public interface ICloudTable<T> where T : ModelBase
     {
         bool ShouldAutoSync { get; set; }
 

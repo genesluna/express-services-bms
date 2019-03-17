@@ -70,7 +70,7 @@ namespace ExpressServices.Helpers
 
             if (string.IsNullOrEmpty(fileName))
             {
-                throw new ArgumentException("ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty".GetLocalized(), nameof(fileName));
+                throw new ArgumentException("/ErrorMessages/ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty".GetLocalized(), nameof(fileName));
             }
 
             var storageFile = await folder.CreateFileAsync(fileName, options);

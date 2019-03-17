@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class CaseNote : BaseModel
+    public class CaseNote : ModelBase
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

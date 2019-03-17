@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Express Services</value>
-    <comment>Application display name</comment>
-  </data>
-  <data name="AppDescription" xml:space="preserve">
-    <value>Business management system focused on repair shops. It provides both financial and operational capabilities.</value>
-    <comment>Application description</comment>
-  </data>
   <data name="Shell_Workshop.Content" xml:space="preserve">
     <value>Workshop</value>
     <comment>Navigation view item name for Workshop</comment>
@@ -132,10 +124,6 @@
   <data name="Shell_Customers.Content" xml:space="preserve">
     <value>Customers</value>
     <comment>Navigation view item name for Customers</comment>
-  </data>
-  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
-    <value>File name is null or empty. Specify a valid file name</value>
-    <comment>File name is null or empty to save file in settings storage extensions</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
     <value>Choose Theme</value>
@@ -153,7 +141,7 @@
     <value>About this application</value>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Settings page placeholder text.  Your app description goes here.</value>
+    <value>Business management system focused on repair shops. It provides both financial and operational capabilities.</value>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
@@ -163,14 +151,6 @@
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
-  </data>
-  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
-    <value>value must be an Enum!</value>
-    <comment>Value must be an Enum in enum to boolean converter</comment>
-  </data>
-  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
-    <value>parameter must be an Enum name!</value>
-    <comment>Parameter must be an Enum name in enum to boolean converter</comment>
   </data>
   <data name="Shell_Blank.Content" xml:space="preserve">
     <value>Blank</value>

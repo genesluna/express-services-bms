@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace ExpressServices.Core.Models
 {
-    public class Case : BaseModel
+    public class Case : ModelBase
     {
         #region Fields
 

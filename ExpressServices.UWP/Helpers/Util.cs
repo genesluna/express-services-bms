@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace ExpressServices.Helpers
@@ -33,6 +35,27 @@ namespace ExpressServices.Helpers
             byte b = (byte)(Convert.ToUInt32(hex.Substring(6, 2), 16));
             SolidColorBrush myBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(a, r, g, b));
             return myBrush;
+        }
+
+        public async Task<ContentDialogResult> ShowDialog<TViewModel>()
+        {
+            var viewModel = IoC.Get<TViewModel>();
+            var view = ViewLocator.LocateForModel(viewModel, null, null);
+
+            ViewModelBinder.Bind(viewModel, view, null);
+
+            var dialog = new ContentDialog
+            {
+                Content = view
+            };
+
+            ScreenExtensions.TryActivate(viewModel);
+
+            var result = await dialog.ShowAsync();
+
+            ScreenExtensions.TryDeactivate(viewModel, true);
+
+            return result;
         }
     }
 }

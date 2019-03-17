@@ -29,6 +29,5 @@
         public static readonly string aadGraphVersion = "api-version=1.6";
 
         public static readonly string aadGraphClientId = "3d68f875-78f7-4f28-8e1f-fe9ceac81bda";
-        public static readonly string aadGraphClientSecret = "jHClk2Vui1yUon2IPophti3ELmVsx/m1IvzB9WisASg=";
     }
 }

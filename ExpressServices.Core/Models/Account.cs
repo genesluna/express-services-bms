@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class Account : BaseModel
+    public class Account : ModelBase
     {
         private string _name;
         private decimal _openingBalance;

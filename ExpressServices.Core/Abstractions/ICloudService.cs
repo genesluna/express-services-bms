@@ -1,5 +1,6 @@
 ﻿using ExpressServices.Core.Models;
 using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Threading.Tasks;
 
 namespace ExpressServices.Core.Abstractions
@@ -10,14 +11,16 @@ namespace ExpressServices.Core.Abstractions
 
         Task<User> GetAuthenticatedUserAsync();
 
-        ICloudTable<T> GetTable<T>() where T : BaseModel;
+        ICloudTable<T> GetTable<T>() where T : ModelBase;
 
         Task InitializeAsync();
 
         Task LogoutAsync();
 
-        Task SyncOfflineCacheAsync();
+        Task SyncOfflineCacheAsync(IProgress<ProgressReportModel> progress);
 
-        Task SyncOffLineTableAsync<T>() where T : BaseModel;
+        Task SyncOfflineCacheAsyncV2();
+
+        Task SyncOffLineTableAsync<T>() where T : ModelBase;
     }
 }

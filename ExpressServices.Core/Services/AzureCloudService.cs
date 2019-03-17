@@ -3,6 +3,7 @@ using ExpressServices.Core.Helpers;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Windows.Storage;
 
 namespace ExpressServices.Core.Services
@@ -50,6 +51,7 @@ namespace ExpressServices.Core.Services
             Debug.WriteLine($"Azure Cloud Service instanciated. Number of instances: {NumberOfInstances}");
         }
 
-        public ICloudTable<T> GetTable<T>() where T : BaseModel => new AzureCloudTable<T>(Client);
+        public ICloudTable<T> GetTable<T>() where T : ModelBase => new AzureCloudTable<T>(Client);
+
     }
 }

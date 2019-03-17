@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using ExpressServices.Core.Helpers;
 using System;
 
 namespace ExpressServices.Core.Models
 {
-    public class HistoryModel : ObservableObject
+    public class HistoryModel : Observable
     {
         private string _id;
         private string _companyId;

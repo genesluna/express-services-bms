@@ -120,13 +120,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\BaseModel.cs" />
+    <Compile Include="Abstractions\ModelBase.cs" />
     <Compile Include="Abstractions\ICloudService.cs" />
     <Compile Include="Abstractions\ICloudTable.cs" />
+    <Compile Include="Credentials\ApiKeys.cs" />
     <Compile Include="Helpers\AuthenticationDelegatingHandler.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\NetworkInformation.cs" />
+    <Compile Include="Helpers\Observable.cs" />
     <Compile Include="Helpers\SecurePasswordHasher.cs" />
     <Compile Include="Helpers\Singleton.cs" />
     <Compile Include="Models\Account.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Models\NavigationParameter.cs" />
     <Compile Include="Models\NoteModel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProgressReportModel.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\SaleProduct.cs" />
     <Compile Include="Models\SaleService.cs" />
@@ -211,9 +214,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
       <Version>5.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmLight">
-      <Version>5.4.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

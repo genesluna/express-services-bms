@@ -116,7 +116,7 @@ namespace ExpressServices.Core.Services
 
         public async Task<User> GetAuthenticatedUserAsync()
         {
-            return await GetTable<User>().ReadItemAsync(CurrentUser.Instance.Id);
+            return await GetTable<User>().GetCloudTable().LookupAsync(CurrentUser.Instance.Id);
         }
     }
 }

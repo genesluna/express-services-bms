@@ -29,7 +29,7 @@
                                Foreground="White" Height="24"  Grid.Column="1" Margin="0,8,150,0"/>
 
         </Grid>
-        
+
         <winui:NavigationView
             Grid.Row="1"
             x:Name="navigationView"
@@ -44,24 +44,25 @@
             RequestedTheme="Dark"
             Background="{ThemeResource Brush-Grey-06}">
 
-            <!--<i:Interaction.Behaviors>
-                <behaviors:NavigationViewHeaderBehavior
-                    x:Name="navigationViewHeaderBehavior"
-                    DefaultHeader="{x:Bind ViewModel.Selected.Content, Mode=OneWay}">
-                    <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock
-                                    Text="{Binding}"
-                                    Style="{ThemeResource TitleTextBlockStyle}"
-                                    Margin="{StaticResource SmallLeftRightMargin}" />
-                            </Grid>
-                        </DataTemplate>
-                    </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                </behaviors:NavigationViewHeaderBehavior>
-            </i:Interaction.Behaviors>-->
+            <winui:NavigationView.PaneFooter>
+                <StackPanel Orientation="Vertical">
+                    <NavigationViewItem Content="Sair" Tag="Logout"
+                                        cm:Message.Attach="[Event Tapped] = [Action OnFooterItemTapped($source, $eventArgs)]">
+                        <NavigationViewItem.Icon>
+                            <FontIcon FontFamily="{StaticResource MaterialIcons}" Glyph="&#xE879;" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </StackPanel>
+            </winui:NavigationView.PaneFooter>
+            
             <Grid RequestedTheme="Light" >
-                <Frame x:Name="shellFrame" DataContext="{x:Null}" />
+                <Frame x:Name="shellFrame" DataContext="{x:Null}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition/>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
             </Grid>
         </winui:NavigationView>
     </Grid>

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ExpressServices.Core.Models
 {
-    public class FingerPrint : BaseModel
+    public class FingerPrint : ModelBase
     {
         [JsonProperty(PropertyName = "ownerid")]
         public string OwnerId { get; set; }
